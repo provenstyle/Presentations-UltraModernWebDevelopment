@@ -7,6 +7,7 @@ import {stream as wiredep} from 'wiredep';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 const fs = require('fs');
+const mkdirp = require('mkdirp');
 
 gulp.task('styles', () => {
   return gulp.src('src/styles/*.scss')
@@ -187,10 +188,12 @@ gulp.task('templateCache', function () {
     .pipe(gulp.dest('.tmp/app'));
 });
 
-gulp.task('clearTemplate', function(cb){
-  fs.writeFile('.tmp/app/templates.js',
-    '//gulp will build the templates for distribution',
-    cb);
+gulp.task('clearTemplate', function(cb) {
+    mkdirp('.tmp/app', function() {
+        fs.writeFile('.tmp/app/templates.js',
+        '//gulp will build the templates for distribution',
+        cb);      
+    });
 });
 
 gulp.task('iisexpress', function() {

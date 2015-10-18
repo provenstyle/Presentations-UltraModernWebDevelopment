@@ -130,15 +130,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Features\Greeting\GreetingController.cs" />
+    <Compile Include="Features\Greeting\Greeting.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".tmp\app\templates.js" />
-    <Content Include=".tmp\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include=".tmp\styles\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="gulpfile.babel.js" />
@@ -182,12 +181,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\styles\main.scss" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include=".tmp\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include=".tmp\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include=".tmp\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include=".tmp\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
