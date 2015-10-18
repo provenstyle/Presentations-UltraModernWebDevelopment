@@ -1,23 +1,12 @@
-new function() {
+(function() {
 
-  var home = new base2.Package(this, {
-    name:    'home',
-    parent:  temp1,
-    imports: 'miruken.mvc,temp1.greeting',
-    exports: 'HomeController'
-  });
+    angular
+        .module('ultraModernWebDev')
+        .controller('homeController', homeController);
 
-  eval(this.imports);
-
-  var HomeController = Controller.extend({
-    $properties:{
-      message: ''
-    },
-    initialize: function() {
-        this.message = Greeting(this.context).message() + ', Columbus';
+    homeController.$inject = ['greeter'];
+    function homeController(greeter) {
+        this.message = greeter.message() + ', Columbus';
     }
-  });
 
-  eval(this.exports);
-
-}
+})();

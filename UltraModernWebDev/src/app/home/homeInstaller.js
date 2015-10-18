@@ -1,27 +1,18 @@
-new function() {
+(function() {
 
-  var home = new base2.Package(this, {
-    name:    'home',
-    parent:  temp1,
-    imports: 'miruken.ioc',
-    exports: 'HomeInstaller'
-  });
+    angular
+        .module('ultraModernWebDev')
+        .config(homeConfig);
 
-  eval(this.imports);
-
-  var HomeInstaller = Installer.extend({
-    $inject: ['$stateProvider'],
-    constructor: function($stateProvider){
-      $stateProvider
-        .state('home', {
-            url:          '/',
-            templateUrl:  'app/home/home.html',
-            controller:   'HomeController',
-            controllerAs: 'vm'
-        });
+    homeConfig.$inject = ['$stateProvider'];
+    function homeConfig($stateProvider) {
+        $stateProvider
+            .state('home', {
+                url: '/',
+                templateUrl: 'app/home/home.html',
+                controller: 'homeController',
+                controllerAs: 'vm'
+            });
     }
-  });
 
-  eval(this.exports);
-
-};
+})();

@@ -1,21 +1,11 @@
-new function() {
+(function() {
 
-  var about = new base2.Package(this, {
-    name:    'about',
-    parent:  temp1,
-    imports: 'miruken.mvc',
-    exports: 'AboutController'
-  });
+    angular
+        .module('ultraModernWebDev')
+        .controller('aboutController', aboutController);
 
-  eval(this.imports);
+    function aboutController() {
 
-  var AboutController = Controller.extend({
-    $properties:{
-    },
-    constructor: function(){
     }
-  });
 
-  eval(this.exports);
-
-}
+})();

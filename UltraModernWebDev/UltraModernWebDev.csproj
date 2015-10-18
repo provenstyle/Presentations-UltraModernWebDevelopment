@@ -146,16 +146,14 @@
     <Content Include="src\app\about\about.html" />
     <Content Include="src\app\about\aboutController.js" />
     <Content Include="src\app\about\aboutInstaller.js" />
-    <Content Include="src\app\greeting.js" />
-    <Content Include="src\app\home\greetingCallbackHandler.js" />
+    <Content Include="src\app\home\greeter.js" />
     <Content Include="src\app\home\home.html" />
     <Content Include="src\app\home\homeController.js" />
     <Content Include="src\app\home\homeInstaller.js" />
-    <Content Include="src\app\temp1Installer.js" />
+    <Content Include="src\app\installer.js" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\Index.html" />
     <Content Include="src\robots.txt" />
-    <Content Include="src\scripts\main.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
