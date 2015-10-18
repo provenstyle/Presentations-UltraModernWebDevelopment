@@ -21,7 +21,7 @@ namespace UltraModernWebDev.Features.Greeting
             return new Greeting
             {
                 Message = messages[new Random().Next(0, messages.Length)]
-        };
+            };
         }
     }
 }
