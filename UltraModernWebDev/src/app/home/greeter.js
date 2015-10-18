@@ -6,22 +6,12 @@
 
     function greeter () {
         return {
-            message: function() {
-                var messages = [
-                    'Hello',
-                    'Howdy',
-                    'Hola',
-                    'Hi',
-                    'Shalom',
-                    'Bonjour'
-                ];
-                return messages[getRandomInt(0, messages.length)];
+            message: function () {
+                return $.get('api/greeting')
+                    .then(function(data) {
+                        return data.message;
+                    });
             }
         };
     }
-
-    function getRandomInt(min, max) {
-        return Math.floor(Math.random() * (max - min)) + min;
-    }
-
 })();

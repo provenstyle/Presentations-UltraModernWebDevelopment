@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 
 namespace UltraModernWebDev.Features.Greeting
 {
@@ -7,10 +8,20 @@ namespace UltraModernWebDev.Features.Greeting
         [Route("api/greeting")]
         public Greeting GetGreeting()
         {
+            var messages = new[]
+            {
+                "Hello",
+                "Howdy",
+                "Hola",
+                "Hi",
+                "Shalom",
+                "Bonjour"
+            };
+
             return new Greeting
             {
-                Message = "Hello"
-            };
+                Message = messages[new Random().Next(0, messages.Length)]
+        };
         }
     }
 }
