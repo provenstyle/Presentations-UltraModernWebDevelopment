@@ -6,7 +6,7 @@
 
     homeController.$inject = ['greeter'];
     function homeController(greeter) {
-        this.message = greeter.message() + ', Columbus';
+        this.message = greeter.message() + ', World!';
     }
 
 })();
