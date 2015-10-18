@@ -20,7 +20,7 @@ gulp.task('styles', () => {
     }).on('error', $.sass.logError))
     .pipe($.autoprefixer({browsers: ['> 1%', 'last 2 versions', 'Firefox ESR']}))
     .pipe($.sourcemaps.write())
-    .pipe(gulp.dest('.tmp/styles'))
+    .pipe(gulp.dest('build/styles'))
     .pipe(reload({stream: true}));
 });
 
@@ -51,7 +51,7 @@ gulp.task('lint', lint('src/app/**/*.js', {
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['styles'], () => {
-  const assets = $.useref.assets({searchPath: ['.tmp', 'src', '.']});
+  const assets = $.useref.assets({searchPath: ['build', 'src', '.']});
 
   return gulp.src('src/*.html')
     .pipe(assets)
@@ -82,7 +82,7 @@ gulp.task('images', () => {
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
     .concat('src/fonts/**/*'))
-    .pipe(gulp.dest('.tmp/fonts'))
+    .pipe(gulp.dest('build/fonts'))
     .pipe(gulp.dest('dist/fonts'));
 });
 
@@ -95,7 +95,7 @@ gulp.task('extras', () => {
   }).pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
+gulp.task('clean', del.bind(null, ['build', 'dist']));
 
 gulp.task('serve', ['styles', 'fonts', 'inject', 'clearTemplate', 'iisexpress'], () => {
   browserSync({
@@ -108,7 +108,7 @@ gulp.task('serve', ['styles', 'fonts', 'inject', 'clearTemplate', 'iisexpress'],
     'src/**/*.html',
     'src/**/*.js',
     'src/images/**/*',
-    '.tmp/fonts/**/*'
+    'build/fonts/**/*'
   ]).on('change', reload);
 
   gulp.watch('src/styles/**/*.scss', ['styles']);
@@ -185,12 +185,12 @@ gulp.task('templateCache', function () {
       module: 'ultraModernWebDev',
       root: 'app/'
     }))
-    .pipe(gulp.dest('.tmp/app'));
+    .pipe(gulp.dest('build/app'));
 });
 
 gulp.task('clearTemplate', function(cb) {
-    mkdirp('.tmp/app', function() {
-        fs.writeFile('.tmp/app/templates.js',
+    mkdirp('build/app', function() {
+        fs.writeFile('build/app/templates.js',
         '//gulp will build the templates for distribution',
         cb);      
     });

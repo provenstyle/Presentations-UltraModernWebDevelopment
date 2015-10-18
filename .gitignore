@@ -2,7 +2,7 @@
 .vs/*
 
 dist
-.tmp
+build
 *~
 _references.js
 obj
