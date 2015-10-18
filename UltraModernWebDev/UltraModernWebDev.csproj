@@ -147,7 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="gulpfile.babel.js" />
+    <Content Include="gulpfile.js" />
     <Content Include="src\apple-touch-icon.png" />
     <Content Include="src\app\about\about.html" />
     <Content Include="src\app\about\aboutController.js" />
