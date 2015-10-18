@@ -168,7 +168,6 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="dist\" />
     <Folder Include="src\fonts\" />
     <Folder Include="src\images\" />
   </ItemGroup>

@@ -42,8 +42,9 @@ gulp.task('lint', lint('src/app/**/*.js', {
     rules: {
         'strict': 0,
         'no-undef': 0,
-        'no-use-before-define': 0
-    },
+        'no-use-before-define': 0,
+        'quotes': 0
+    }
 }));
 
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
@@ -168,7 +169,7 @@ gulp.task('default', ['clean'], () => {
 gulp.task('inject', () => {
   var target = gulp.src('src/index.html');
   var sources = gulp.src([
-    'src/app/temp1Installer.js',
+    'src/app/installer.js',
     'src/app/**/*.js'
   ], {read: false});
 
@@ -180,7 +181,7 @@ gulp.task('templateCache', function () {
   console.log($.angularTemplatecache);
   return gulp.src('src/app/**/*.html')
     .pipe($.angularTemplatecache({
-      module: 'temp1',
+      module: 'ultraModernWebDev',
       root: 'app/'
     }))
     .pipe(gulp.dest('.tmp/app'));
