@@ -100,8 +100,8 @@ gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
 gulp.task('serve', ['styles', 'fonts', 'inject', 'clearTemplate', 'iisexpress'], () => {
   browserSync({
       notify: false,
-      proxy: 'http://localhost:9100',
-      port:  '9200'
+      proxy: 'http://localhost:9500',
+      port:  '9600'
   });
 
   gulp.watch([
@@ -121,8 +121,8 @@ gulp.task('serve', ['styles', 'fonts', 'inject', 'clearTemplate', 'iisexpress'],
 gulp.task('serve:dist', ['iisexpress'], () => {
   browserSync({
     notify: false,
-    proxy: 'http://localhost:9100',
-    port: 9200
+    proxy: 'http://localhost:9500',
+    port: 9600
   });
 });
 
