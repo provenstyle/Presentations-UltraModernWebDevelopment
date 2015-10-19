@@ -11,6 +11,7 @@ using Castle.MicroKernel;
 using Castle.MicroKernel.Lifestyle;
 using Castle.MicroKernel.Registration;
 using Castle.Windsor;
+using Improving.MediatR;
 
 namespace UltraModernWebDev
 {
@@ -29,6 +30,7 @@ namespace UltraModernWebDev
                     .WithServiceSelf()
                     .LifestyleScoped(typeof(WebRequestScopeAccessor))
             );
+            container.Install(new MediatRInstaller(Classes.FromThisAssembly()));
             ControllerBuilder.Current.SetControllerFactory(new WindsorControllerFactory(container.Kernel));
             GlobalConfiguration.Configuration.Services.Replace(typeof(IHttpControllerActivator), new WindsorHttpControllerActivator(container.Kernel));
         }
