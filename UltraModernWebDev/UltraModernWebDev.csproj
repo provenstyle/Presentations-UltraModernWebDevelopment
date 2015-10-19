@@ -167,6 +167,8 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
+    <Content Include="src\styles\about.scss" />
+    <None Include="_references.js" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\fonts\" />
