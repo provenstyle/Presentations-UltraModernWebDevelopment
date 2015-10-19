@@ -172,7 +172,7 @@ gulp.task('default', ['clean'], function () {
 gulp.task('inject', function () {
   var target = gulp.src('src/index.html');
   var sources = gulp.src([
-    'src/app/installer.js',
+    'src/app/setup.js',
     'src/app/**/*.js'
   ], {read: false});
 

@@ -158,12 +158,12 @@
     <Content Include="src\apple-touch-icon.png" />
     <Content Include="src\app\about\about.html" />
     <Content Include="src\app\about\aboutController.js" />
-    <Content Include="src\app\about\aboutInstaller.js" />
+    <Content Include="src\app\about\aboutSetup.js" />
     <Content Include="src\app\home\greeter.js" />
     <Content Include="src\app\home\home.html" />
     <Content Include="src\app\home\homeController.js" />
-    <Content Include="src\app\home\homeInstaller.js" />
-    <Content Include="src\app\installer.js" />
+    <Content Include="src\app\home\homeSetup.js" />
+    <Content Include="src\app\setup.js" />
     <Content Include="src\favicon.ico" />
     <Content Include="src\Index.html" />
     <Content Include="src\robots.txt" />
