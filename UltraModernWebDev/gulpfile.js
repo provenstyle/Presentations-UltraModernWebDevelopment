@@ -39,6 +39,9 @@ const testLintOptions = {
 };
 
 gulp.task('lint', lint('src/app/**/*.js', {
+    env: {
+        "es6": true  
+    },
     rules: {
         'strict': 0,
         'no-undef': 0,
@@ -50,7 +53,7 @@ gulp.task('lint', lint('src/app/**/*.js', {
 gulp.task('lint:test', lint('test/spec/**/*.js', testLintOptions));
 
 gulp.task('html', ['styles'], function () {
-  const assets = $.useref.assets({searchPath: ['build', 'src', '.']});
+  const assets = $.useref.assets({searchPath: ['build', '.']});
 
   return gulp.src('src/*.html')
     .pipe(assets)
@@ -96,7 +99,7 @@ gulp.task('extras', function () {
 
 gulp.task('clean', del.bind(null, ['build', 'dist']));
 
-gulp.task('serve', ['styles', 'fonts', 'inject', 'clearTemplate', 'iisexpress'], function () {
+gulp.task('serve', ['babel', 'styles', 'fonts', 'inject', 'clearTemplate', 'iisexpress'], function () {
   browserSync({
       notify: false,
       proxy: 'http://localhost:9500',
@@ -105,7 +108,7 @@ gulp.task('serve', ['styles', 'fonts', 'inject', 'clearTemplate', 'iisexpress'],
 
   gulp.watch([
     'src/**/*.html',
-    'src/**/*.js',
+    'build/**/*.js',
     'src/images/**/*',
     'build/fonts/**/*'
   ]).on('change', reload);
@@ -113,7 +116,7 @@ gulp.task('serve', ['styles', 'fonts', 'inject', 'clearTemplate', 'iisexpress'],
   gulp.watch('src/styles/**/*.scss', ['styles']);
   gulp.watch('src/fonts/**/*', ['fonts']);
   gulp.watch('bower.json', ['wiredep', 'fonts']);
-  gulp.watch('src/**/*.js', ['inject']);
+  gulp.watch('src/**/*.js', ['babel', 'inject']);
 
 });
 
@@ -158,7 +161,7 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest('src'));
 });
 
-gulp.task('build', ['lint', 'wiredep', 'inject', 'templateCache', 'html', 'images', 'fonts', 'extras'], function () {
+gulp.task('build', ['lint', 'babel', 'wiredep', 'inject', 'templateCache', 'html', 'images', 'fonts', 'extras'], function () {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
@@ -178,7 +181,6 @@ gulp.task('inject', function () {
 });
 
 gulp.task('templateCache', function () {
-  console.log($.angularTemplatecache);
   return gulp.src('src/app/**/*.html')
     .pipe($.angularTemplatecache({
       module: 'ultraModernWebDev',
@@ -201,3 +203,9 @@ gulp.task('iisexpress', function() {
             '"C:\\Program Files\\IIS Express\\iisexpress.exe" /config:..\\.vs\\config\\applicationhost.config /site:UltraModernWebDev /systray:false'
         ]));
 });
+
+gulp.task('babel', function() {
+    return gulp.src('src/**/*.js')
+        .pipe($.babel())
+        .pipe(gulp.dest('build'));
+})

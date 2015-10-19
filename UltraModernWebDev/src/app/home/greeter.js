@@ -6,11 +6,10 @@
 
     function greeter () {
         return {
-            message: function () {
-                return $.get('api/greeting')
-                    .then(function(data) {
-                        return data.message;
-                    });
+            message: () => {
+                return $.get('api/greeting').then((data) => {
+                    return data.message;
+                });
             }
         };
     }
