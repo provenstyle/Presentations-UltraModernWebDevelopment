@@ -15,24 +15,9 @@ namespace UltraModernWebDev.Features.Greeting
         }
 
         [Route("api/greeting")]
-        public async Task<Greeting> GetGreeting(Greet greet)
+        public async Task<Greeting> GetGreeting()
         {
-            return await _mediator.SendAsync(greet);
-
-            var messages = new[]
-            {
-                "Hello",
-                "Howdy",
-                "Hola",
-                "Hi",
-                "Shalom",
-                "Bonjour"
-            };
-
-            return new Greeting
-            {
-                Message = messages[new Random().Next(0, messages.Length)]
-            };
+            return await _mediator.SendAsync(new Greet());            
         }
     }
 }

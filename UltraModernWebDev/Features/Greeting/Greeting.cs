@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using MediatR;
 
 namespace UltraModernWebDev.Features.Greeting
@@ -17,7 +18,20 @@ namespace UltraModernWebDev.Features.Greeting
     {
         public Task<Greeting> Handle(Greet message)
         {
-            return Task.FromResult(new Greeting {Message = "Yo"});
+            var messages = new[]
+            {
+                "Hello",
+                "Howdy",
+                "Hola",
+                "Hi",
+                "Shalom",
+                "Bonjour"
+            };
+
+            return Task.FromResult(new Greeting
+            {
+                Message = messages[new Random().Next(0, messages.Length)]
+            });
         }
     }
 }
