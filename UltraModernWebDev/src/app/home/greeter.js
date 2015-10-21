@@ -6,8 +6,8 @@
 
     function greeter () {
         return {
-            message: () => {
-                return $.get('api/greeting').then((data) => {
+            message: function() {
+                return $.get('api/greeting').then(function(data) {
                     return data.message;
                 });
             }
