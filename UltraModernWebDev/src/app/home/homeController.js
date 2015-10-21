@@ -10,7 +10,7 @@
         this.greet = function() {
             greeter.message().then(function(message) {
                 $scope.$applyAsync(function() {
-                    this.message = message + 'World!';
+                    this.message = message + ', World!';
                 }.bind(this));
             }.bind(this));
         };
